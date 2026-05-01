@@ -4,7 +4,7 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "sensei",
   "workspaceFolder": "/workspace",
-  
+
   "forwardPorts": [8080, 5432],
   "postCreateCommand": "apt-get update && apt-get install -y postgresql-client maven",
 
@@ -14,6 +14,7 @@
     },
     "ghcr.io/devcontainers/features/git:1": {}
   },
+
   "customizations": {
     "vscode": {
       "extensions": [
@@ -39,6 +40,6 @@
       }
     }
   },
-  
+
   "remoteUser": "vscode"
 }
