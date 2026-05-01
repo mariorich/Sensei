@@ -1,8 +1,5 @@
-# .devcontainer/docker-compose.yml
-version: "3.9"
-
 services:
-  app:
+  sensei:
     image: mcr.microsoft.com/devcontainers/java:1-17-bullseye
     volumes:
       - ..:/workspace:cached
@@ -19,8 +16,3 @@ services:
       POSTGRES_DB: sensei
     ports:
       - "5432:5432"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-
-volumes:
-  postgres-data:

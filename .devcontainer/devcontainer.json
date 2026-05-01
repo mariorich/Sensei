@@ -8,8 +8,6 @@
   "forwardPorts": [8080, 5432],
   "postCreateCommand": "sudo apt-get update && sudo apt-get install -y maven postgresql-client",
 
-  "customizations": {
-
   "features": {
     "ghcr.io/devcontainers/features/java:1": {
       "version": "17"
@@ -43,6 +41,4 @@
   },
   
   "remoteUser": "vscode"
-  
-}
 }
