@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/students")
@@ -28,7 +29,7 @@ public class StudentController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public StudentResponse createStudent(@RequestBody StudentRequest studentRequest) {
+    public StudentResponse createStudent(@RequestBody @Valid StudentRequest studentRequest) {
         return studentService.createStudent(studentRequest);
     }
 
@@ -43,7 +44,7 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
-    public StudentResponse updateStudent(@PathVariable Long id, @RequestBody StudentRequest studentRequest) {
+    public StudentResponse updateStudent(@PathVariable Long id, @RequestBody @Valid StudentRequest studentRequest) {
         return studentService.updateStudent(id, studentRequest);
     }
 
