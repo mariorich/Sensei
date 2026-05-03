@@ -31,7 +31,7 @@ public class Enrollment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "plan_id")
-    private EnrollmentPlan plan;
+    private Plan plan;
 
     @Column(name = "start_date")
     private LocalDate startDate;
@@ -78,11 +78,11 @@ public class Enrollment {
         this.student = student;
     }
 
-    public EnrollmentPlan getPlan() {
+    public Plan getPlan() {
         return plan;
     }
 
-    public void setPlan(EnrollmentPlan plan) {
+    public void setPlan(Plan plan) {
         this.plan = plan;
     }
 

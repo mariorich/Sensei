@@ -9,6 +9,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,20 +18,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
-/*
-CREATE TABLE invoices (
-    id BIGSERIAL PRIMARY KEY,
-    enrollment_id BIGINT NOT NULL REFERENCES enrollments(id) ON DELETE CASCADE,
-    amount DECIMAL(10, 2) NOT NULL CHECK (amount >= 0),
-    expiration_date DATE NOT NULL,
-    payment_date TIMESTAMP,
-    cancel_date DATE,
-    status VARCHAR(20) NOT NULL DEFAULT 'PENDING' CHECK (status IN ('PENDING', 'PAID', 'CANCELLED', 'OVERDUE')),
-    UNIQUE (enrollment_id, expiration_date),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-*/
+
 @Entity
 @Table(name = "invoices")
 public class Invoice {
@@ -39,7 +27,7 @@ public class Invoice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "enrollment_id")
     private Enrollment enrollment;
 

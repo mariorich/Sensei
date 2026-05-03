@@ -1,15 +1,19 @@
 package dev.mariorich.sensei.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import dev.mariorich.sensei.domain.enums.StudentGender;
 
 
 @Entity
@@ -18,14 +22,15 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
     private String name;
 
     @Column(name = "birth_date")
-    private String birthDate;
+    private LocalDate birthDate;
 
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private StudentGender gender;
     
     private String phone;
     
@@ -63,11 +68,11 @@ public class Student {
     }
 
     // Getters and Setters
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -79,19 +84,19 @@ public class Student {
         this.name = name;
     }
 
-    public String getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
-    public String getGender() {
+    public StudentGender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(StudentGender gender) {
         this.gender = gender;
     }
 

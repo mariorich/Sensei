@@ -31,8 +31,6 @@ public class Graduation {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    private boolean active;
-
 
     public Long getId() {
         return id;
@@ -69,11 +67,5 @@ public class Graduation {
     }
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
-    }
-    public boolean isActive() {
-        return active;
-    }
-    public void setActive(boolean active) {
-        this.active = active;
     }
 }

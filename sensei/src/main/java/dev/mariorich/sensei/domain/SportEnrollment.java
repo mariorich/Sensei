@@ -5,11 +5,13 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
@@ -34,24 +36,24 @@ public class SportEnrollment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "enrollment_id")
     private Enrollment enrollment;
 
-    @ManyToMany
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sport_id")
     private Sport sport;
 
-    @ManyToMany
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "graduation_id")
     private Graduation graduation;
 
-    @ManyToMany
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "plan_id")
     private Plan plan;
 
     @Column(name = "start_date")
-    private LocalDateTime startDate;
+    private LocalDate startDate;
     
     @Column(name = "end_date")
     private LocalDate endDate;
@@ -59,7 +61,7 @@ public class SportEnrollment {
     @PrePersist
     public void prePersist() {
         if (startDate == null) {
-            startDate = LocalDateTime.now();
+            startDate = LocalDate.now();
         }
     }
 
@@ -103,11 +105,11 @@ public class SportEnrollment {
         this.plan = plan;
     }
 
-    public LocalDateTime getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
