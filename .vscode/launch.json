@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SenseiApplication<sensei>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "dev.mariorich.sensei.SenseiApplication",
+            "projectName": "sensei",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
