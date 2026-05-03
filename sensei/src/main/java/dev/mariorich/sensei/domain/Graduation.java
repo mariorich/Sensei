@@ -3,6 +3,7 @@ package dev.mariorich.sensei.domain;
 import java.time.LocalDateTime;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -24,9 +25,13 @@ public class Graduation {
     @JoinColumn(name = "sport_id")
     private Sport sport;
 
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
+   
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    private boolean active;
 
 
     public Long getId() {
@@ -64,5 +69,11 @@ public class Graduation {
     }
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+    public boolean isActive() {
+        return active;
+    }
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }
